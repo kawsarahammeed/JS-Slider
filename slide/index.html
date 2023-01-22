@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slider</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="slider">
+        <div class="container slider-container">
+            <div class="slide-img">
+                <img src="img/1.jpg" alt="">
+                <img src="img/2.jpg" alt="">
+                <img src="img/3.jpg" alt="">
+                <img src="img/4.jpg" alt="">
+                <img src="img/5.jpg" alt="">
+                <img src="img/6.jpg" alt="">
+                <img src="img/7.jpg" alt="">
+            </div>
+            <div class="slider-arow left" onclick="slideBar(-1)">
+                <img src="img/arrow-bar-left.svg" alt="">
+            </div>
+            <div class="slider-arow right" onclick="slideBar(1)">
+                <img src="img/arrow-bar-right.svg" alt="">
+            </div>
+            <div class="slide-btr">
+                <span onclick="btm(1)"></span>                
+                <span onclick="btm(2)"></span>                
+                <span onclick="btm(3)"></span>                
+                <span onclick="btm(4)"></span>                
+                <span onclick="btm(5)"></span>                
+                <span onclick="btm(6)"></span>                
+                <span onclick="btm(7)"></span>                
+            </div>
+        </div>
+    </section> 
+    
+    
+    <script>  
+
+    let indexValue = 1; 
+     showImg (indexValue);
+
+     function btm(event){
+        showImg (indexValue = event);
+     }
+     function slideBar(event){
+        showImg (indexValue += event);
+     }
+
+     function showImg(event){
+        let i ;
+
+        const img = document.querySelectorAll('.slide-img img');
+        const sliderBtm = document.querySelectorAll('.slide-btr span');
+
+        if(event>img.length){indexValue = 1}
+        if(event<1){indexValue = img.length}
+
+        for(i=0; i<img.length; i++){
+            img[i].style.display = 'none'
+        }
+        for(i=0; i<sliderBtm.length; i++){
+            sliderBtm[i].style.background = 'none'
+        }
+
+        img[indexValue-1].style.display = 'block'        
+        sliderBtm[indexValue-1].style.background = 'rgba(0, 0, 0, 0.9)'        
+     }
+
+
+    </script>
+</body>
+</html>
